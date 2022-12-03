@@ -24,12 +24,12 @@ fn main() {
 
     calories.sort();
 
-    let top_three = calories
+    let top = calories
         .into_iter()
         .rev()
-        .take(3)
+        .take(1)
         .reduce(|accum, item| accum + item)
         .unwrap();
 
-    println!("Top three: {:?}", top_three);
+    println!("Top: {:?}", top);
 }
