@@ -15,13 +15,5 @@ fn main() {
 fn score_round(opponent: u8, outcome: u8) -> u8 {
     let shift = outcome - b'X' + 2;
     let me = b'X' + (opponent - b'A' + shift) % 3;
-    println!(
-        "{}({opponent}) {}({outcome}) | 'X({}) + ({}({opponent}) - 'A({}) + shift({shift})) % 3 = me({me})",
-        char::from(opponent),
-        char::from(outcome),
-        b'X',
-        char::from(opponent),
-        b'A',
-    );
     (me - b'W') + 3 * (outcome - b'X')
 }
