@@ -12,12 +12,12 @@ fn do_work(input: &str) {
     let mut overlap_count = 0;
 
     for line in input.lines() {
-        let elves = line.split_once(",").unwrap();
-        let (s1, e1) = elves.0.split_once("-").unwrap();
-        let (s2, e2) = elves.1.split_once("-").unwrap();
-        let mut first_elf = s1.parse::<i32>().unwrap()..=e1.parse::<i32>().unwrap();
+        let (first, second) = line.split_once(",").unwrap();
+        let (s1, e1) = first.split_once("-").unwrap();
+        let (s2, e2) = second.split_once("-").unwrap();
+        let mut first_elf = s1.parse::<u16>().unwrap()..=e1.parse::<u16>().unwrap();
 
-        let second_elf = s2.parse::<i32>().unwrap()..=e2.parse::<i32>().unwrap();
+        let second_elf = s2.parse::<u16>().unwrap()..=e2.parse::<u16>().unwrap();
 
         if first_elf.any(|x| second_elf.contains(&x)) {
             overlap_count += 1;
