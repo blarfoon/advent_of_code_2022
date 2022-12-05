@@ -8,18 +8,18 @@ fn main() {
     let mut overlap_count = 0;
 
     for line in input.lines() {
-        let elves = line.split(",").collect::<Vec<_>>();
-        let first_elf_parts = elves[0].split("-").collect::<Vec<_>>();
-        let second_elf_parts = elves[1].split("-").collect::<Vec<_>>();
+        let (first, second) = line.split_once(",").unwrap();
+        let (s1, e1) = first.split_once("-").unwrap();
+        let (s2, e2) = second.split_once("-").unwrap();
 
         let first_elf = Elf {
-            start: first_elf_parts[0].parse::<i32>().unwrap(),
-            end: first_elf_parts[1].parse::<i32>().unwrap(),
+            start: s1.parse::<i32>().unwrap(),
+            end: e1.parse::<i32>().unwrap(),
         };
 
         let second_elf = Elf {
-            start: second_elf_parts[0].parse::<i32>().unwrap(),
-            end: second_elf_parts[1].parse::<i32>().unwrap(),
+            start: s2.parse::<i32>().unwrap(),
+            end: e2.parse::<i32>().unwrap(),
         };
 
         if first_elf.start >= second_elf.start && first_elf.end <= second_elf.end
